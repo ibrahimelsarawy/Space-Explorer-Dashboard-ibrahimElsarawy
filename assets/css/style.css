@@ -1834,6 +1834,21 @@ button,
         transform: translate(0)
     }
 }
+.sidebar-mobile {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 50;
+}
+
+.sidebar-mobile.open {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) {
+  .sidebar-mobile {
+    transform: translateX(0) !important;
+  }
+}
 
 .sidebar-mobile.sidebar-open {
     transform: translate(0) !important

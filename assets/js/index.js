@@ -1,13 +1,9 @@
-// ============================================
 //  NASA API KEY
-// ============================================
-let planetsMap = {};
 
 const apiKey = "bU7WaOFtMVnWeJGvbySkFHQt5WestD49c69xOgQa";
+let planetsMap = {};
 
-// ============================================
 //   ---------- APOD SECTION ----------
-// ============================================
 async function loadTodayAPOD() {
   try {
     const today = new Date();
@@ -116,9 +112,7 @@ document.getElementById("today-apod-btn").addEventListener("click", () => {
   loadAPOD();
 });
 
-// ============================================
 //  ---------- PLANETS SECTION ----------
-// ============================================
 const planetColors = {
   mercury: "#6b7280",
   venus: "#fb923c",
@@ -643,10 +637,26 @@ document
   });
 
 
+const sidebar = document.getElementById("sidebar");
+const sidebarToggle = document.getElementById("sidebar-toggle");
+
+sidebarToggle.addEventListener("click", function (e) {
+  e.stopPropagation(); 
+  sidebar.classList.toggle("open");
+});
+
+sidebar.addEventListener("click", function (e) {
+  e.stopPropagation();
+});
+
+document.addEventListener("click", function () {
+  sidebar.classList.remove("open");
+});
+
   
-//     Nav
 const navLinks = document.querySelectorAll(".nav-link");
 const sections = document.querySelectorAll(".app-section");
+
 for (let i = 0; i < navLinks.length; i++) {
   navLinks[i].addEventListener("click", function () {
 
@@ -662,6 +672,8 @@ for (let i = 0; i < navLinks.length; i++) {
 
     const sectionId = this.getAttribute("data-section");
     document.getElementById(sectionId).classList.remove("hidden");
+
+    sidebar.classList.remove("open");
   });
 }
 
